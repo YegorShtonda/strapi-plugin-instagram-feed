@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-instagram-feed",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Strapi plugin for scraping instagram feed",
   "strapi": {
     "name": "Instagram Feed",
