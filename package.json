@@ -1,0 +1,21 @@
+{
+  "name": "strapi-plugin-instagram-feed",
+  "version": "3.0.5",
+  "description": "Strapi plugin for scraping instagram feed",
+  "strapi": {
+    "name": "Instagram Feed",
+    "description": "Strapi plugin for scraping instagram feed"
+  },
+  "keywords": [
+    "strapi",
+    "plugin",
+    "instagram",
+    "feed",
+    "scraping"
+  ],
+  "author": "Yegor Shtonda <shtyegor@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "instagram-scraping": "^1.0.13"
+  }
+}
