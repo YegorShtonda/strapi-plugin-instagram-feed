@@ -21,8 +21,22 @@ module.exports = ({ env }) => ({
   'instagram-feed': {
     username: 'instagram',
     count: 4,
-    isText: true,
-    isThumbnails: true,
+    fields: {
+      shortcode: true,
+      owner_id: true,
+      date: true,
+      comment_count: true,
+      like_count: true,
+      is_video: true,
+      text: true,
+      display_url: true,
+      thumbnail: true,
+      thumbnail_150x150: true,
+      thumbnail_240x240: true,
+      thumbnail_320x320: true,
+      thumbnail_480x480: true,
+      thumbnail_640x640: true
+    }
   },
 });
 ```
@@ -47,7 +61,7 @@ Add cron job for Instagram Feed.
 module.exports = {
   // At every 30th minute.
   '*/30 * * * *': () => {
-    strapi.plugins['instagram-feed'].services.instagramfeed.fetchInstagramFeed();
+    strapi.plugins['instagram-feed'].services['instagram-feed'].fetchInstagramFeed();
   }
 };
 ```
@@ -55,44 +69,22 @@ module.exports = {
 ### Exemple output
 ```json
 [
-    {
-        "media_id": "2340988290610601675",
-        "shortcode": "CB83HJ9MZ7L",
-        "text": "Here are the faces of #Pride.",
-        "comment_count": 6479,
-        "like_count": 445700,
-        "display_url": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/105968638_711749393004488_7206447664559054522_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=bjTyKN-cQ4QAX8dtquO&oh=53e548dc4cfbcd32a67592f5b44661c0&oe=5F23BCC7",
-        "owner_id": "25025320",
-        "ate": 1593287572,
-        "thumbnail": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/c0.180.1440.1440a/s640x640/105968638_711749393004488_7206447664559054522_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=bjTyKN-cQ4QAX8dtquO&oh=7b139b9aeeffe7e3f1894f9736791af3&oe=5F23DBE3",
-        "thumbnail_resource": [
-            {
-                "src": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.180.1440.1440a/s150x150/105968638_711749393004488_7206447664559054522_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=bjTyKN-cQ4QAX8dtquO&oh=b27885127d5d76f59e8e54da014ac5dc&oe=5F21B253",
-                "config_width": 150,
-                "config_height": 150
-            },
-            {
-                "src": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.180.1440.1440a/s240x240/105968638_711749393004488_7206447664559054522_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=bjTyKN-cQ4QAX8dtquO&oh=cb4ffff3064d77abac1160122df02fa5&oe=5F217B55",
-                "config_width": 240,
-                "config_height": 240
-            },
-            {
-                "src": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.180.1440.1440a/s320x320/105968638_711749393004488_7206447664559054522_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=bjTyKN-cQ4QAX8dtquO&oh=c2b42530c726bfdbc48637381c025b9c&oe=5F21372B",
-                "config_width": 320,
-                "config_height": 320
-            },
-            {
-                "src": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.180.1440.1440a/s480x480/105968638_711749393004488_7206447664559054522_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=bjTyKN-cQ4QAX8dtquO&oh=cbd4e0bcfd648f518a87794f3f1671cd&oe=5F2212EE",
-                "config_width": 480,
-                "config_height": 480
-            },
-            {
-                "src": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/c0.180.1440.1440a/s640x640/105968638_711749393004488_7206447664559054522_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=bjTyKN-cQ4QAX8dtquO&oh=7b139b9aeeffe7e3f1894f9736791af3&oe=5F23DBE3",
-                "config_width": 640,
-                "config_height": 640
-            }
-        ],
-        "is_video": false
-    }
+  [
+{
+  "shortcode": "CCq1D_cMYMF",
+  "owner_id": "25025320",
+  "date": "2020-07-15T16:20:02.000Z",
+  "comment_count": 11924,
+  "like_count": 1265280,
+  "is_video": false,
+  "text": "“My work is a form of play. It’s a way to lose myself in the landscape, to integrate more deeply with something bigger,” says artist Benjamin Everett (@bejamin). Benjamin constructs his painterly photographic landscapes from multiple images, and often many locations, from his travels around the world.⁣ ☁️⁣ “In the case of clouds, I may see a particular billowing curve or interesting shadowed shape. The cloud in this image is a combination of five or six individual cloud parts.” Overall, this image was made from 20 individual photos.⁣ ☁️⁣ “My favorite part of making art is the moment when the image seems to take over and I’m along for the ride. It’s like climbing or surfing. You know what mountain you’re on, or what kind of wave you’ve caught, but never too certain how it will turn out. Sometimes I don’t want the process to end because I don’t want the adventure to be over.”⁣ ☁️⁣ #ThisWeekOnInstagram⁣ ⁣ Photo illustration by @bejamin",
+  "display_url": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/108328143_173046760861295_8394639393927238253_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=e3DAn_I5uFMAX9JosyS&oh=bc89a2f0612a67f2761fec04f09bb60e&oe=5F396F7A",
+  "thumbnail": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/c0.169.1349.1349a/s640x640/108328143_173046760861295_8394639393927238253_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=e3DAn_I5uFMAX9JosyS&oh=3fb799bae83d74fe394ffccb9700b57c&oe=5F38954E",
+  "thumbnail_150x150": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.169.1349.1349a/s150x150/108328143_173046760861295_8394639393927238253_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=e3DAn_I5uFMAX9JosyS&oh=2c1e0d0d31e7af8bd21d8da27838f94e&oe=5F3ADDFE",
+  "thumbnail_240x240": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.169.1349.1349a/s240x240/108328143_173046760861295_8394639393927238253_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=e3DAn_I5uFMAX9JosyS&oh=50112bdcf581d9700a3f33ebac5f1482&oe=5F3A9A7C",
+  "thumbnail_320x320": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.169.1349.1349a/s320x320/108328143_173046760861295_8394639393927238253_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=e3DAn_I5uFMAX9JosyS&oh=43006e2b3155f753b6f4b02c4ebd9205&oe=5F384806",
+  "thumbnail_480x480": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/e35/c0.169.1349.1349a/s480x480/108328143_173046760861295_8394639393927238253_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=e3DAn_I5uFMAX9JosyS&oh=2843a9778e7fd2050eb7f5815ad80550&oe=5F3949C3",
+  "thumbnail_640x640": "https://instagram.fdnk1-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/c0.169.1349.1349a/s640x640/108328143_173046760861295_8394639393927238253_n.jpg?_nc_ht=instagram.fdnk1-1.fna.fbcdn.net&_nc_cat=1&_nc_ohc=e3DAn_I5uFMAX9JosyS&oh=3fb799bae83d74fe394ffccb9700b57c&oe=5F38954E"
+  }
 ]
 ```
