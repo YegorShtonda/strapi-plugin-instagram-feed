@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "instagram_feed",
+  "info": {
+    "name": "instagram_feed"
+  },
+  "options": {
+    "increments": false,
+    "timestamps": false
+  },
+  "attributes": {
+    "shortcode": {
+      "type": "string"
+    },
+    "owner_id": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "comment_count": {
+      "type": "integer"
+    },
+    "like_count": {
+      "type": "integer"
+    },
+    "is_video": {
+      "type": "boolean"
+    },
+    "text": {
+      "type": "richtext"
+    },
+    "display_url": {
+      "type": "text"
+    },
+    "thumbnail": {
+      "type": "text"
+    },
+    "thumbnail_150x150": {
+      "type": "text"
+    },
+    "thumbnail_240x240": {
+      "type": "text"
+    },
+    "thumbnail_320x320": {
+      "type": "text"
+    },
+    "thumbnail_480x480": {
+      "type": "text"
+    },
+    "thumbnail_640x640": {
+      "type": "text"
+    }
+  }
+}

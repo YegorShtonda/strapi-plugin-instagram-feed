@@ -3,7 +3,7 @@
     {
       "method": "GET",
       "path": "/",
-      "handler": "InstagramFeed.index",
+      "handler": "instagram-feed.index",
       "config": {
         "policies": []
       }
