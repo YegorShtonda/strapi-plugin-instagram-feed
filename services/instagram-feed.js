@@ -46,6 +46,13 @@ module.exports = {
                   comment_count: post.comment_count,
                   like_count: post.like_count,
                   text: post.text,
+                  display_url: post.display_url,
+                  thumbnail: post.thumbnail,
+                  thumbnail_150x150: post.thumbnail_resource[0].src,
+                  thumbnail_240x240: post.thumbnail_resource[1].src,
+                  thumbnail_320x320: post.thumbnail_resource[2].src,
+                  thumbnail_480x480: post.thumbnail_resource[3].src,
+                  thumbnail_640x640: post.thumbnail_resource[4].src
                 }
               )
             );
