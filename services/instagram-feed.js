@@ -70,9 +70,9 @@ module.exports = {
 
         await Promise.all(queries);
 
-        strapi.log.info(`✅ Instagram Feed Plugin -> Create ${createPostCount} posts`);
-        strapi.log.info(`✅ Instagram Feed Plugin -> Update ${updatePostCount} posts`);
-        strapi.log.info(`❌ Instagram Feed Plugin -> Delete ${deletePostCount} posts`);
+        strapi.log.info(`✅ Instagram Feed Plugin -> Created ${createPostCount} posts`);
+        strapi.log.info(`✅ Instagram Feed Plugin -> Updated ${updatePostCount} posts`);
+        strapi.log.info(`❌ Instagram Feed Plugin -> Deleted ${deletePostCount} posts`);
       })
       .catch(err => {
         console.error(err);
