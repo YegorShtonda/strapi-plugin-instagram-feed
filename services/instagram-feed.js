@@ -41,7 +41,7 @@ module.exports = {
             updatePostCount ++;
             queries.push(
               strapi.query('instagram-feed', 'instagram-feed').update(
-                { owner_id: post.owner_id },
+                { shortcode: post.shortcode },
                 {
                   comment_count: post.comment_count,
                   like_count: post.like_count,
