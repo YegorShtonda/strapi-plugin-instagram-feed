@@ -17,34 +17,17 @@ module.exports = {
         const queries = [];
 
         posts.forEach(post => {
-          if(!oldPosts.find(oldPost => oldPost.owner_id === post.owner_id)) {
-            createPostCount ++;
-            queries.push(
-              strapi.query('instagram-feed', 'instagram-feed').create({
-                shortcode: post.shortcode,
-                owner_id: post.owner_id,
-                date: new Date(post.date * 1000).toISOString(),
-                comment_count: post.comment_count,
-                like_count: post.like_count,
-                is_video: post.is_video,
-                text: post.text,
-                display_url: post.display_url,
-                thumbnail: post.thumbnail,
-                thumbnail_150x150: post.thumbnail_resource[0].src,
-                thumbnail_240x240: post.thumbnail_resource[1].src,
-                thumbnail_320x320: post.thumbnail_resource[2].src,
-                thumbnail_480x480: post.thumbnail_resource[3].src,
-                thumbnail_640x640: post.thumbnail_resource[4].src
-              })
-            );
-          } else {
-            updatePostCount ++;
-            queries.push(
-              strapi.query('instagram-feed', 'instagram-feed').update(
-                { shortcode: post.shortcode },
-                {
+          try {
+            if(!oldPosts.find(oldPost => oldPost.shortcode === post.shortcode)) {
+              createPostCount ++;
+              queries.push(
+                strapi.query('instagram-feed', 'instagram-feed').create({
+                  shortcode: post.shortcode,
+                  owner_id: post.owner_id,
+                  date: new Date(post.date * 1000).toISOString(),
                   comment_count: post.comment_count,
                   like_count: post.like_count,
+                  is_video: post.is_video,
                   text: post.text,
                   display_url: post.display_url,
                   thumbnail: post.thumbnail,
@@ -53,14 +36,35 @@ module.exports = {
                   thumbnail_320x320: post.thumbnail_resource[2].src,
                   thumbnail_480x480: post.thumbnail_resource[3].src,
                   thumbnail_640x640: post.thumbnail_resource[4].src
-                }
-              )
-            );
+                })
+              );
+            } else {
+              updatePostCount ++;
+              queries.push(
+                strapi.query('instagram-feed', 'instagram-feed').update(
+                  { shortcode: post.shortcode },
+                  {
+                    comment_count: post.comment_count,
+                    like_count: post.like_count,
+                    text: post.text,
+                    display_url: post.display_url,
+                    thumbnail: post.thumbnail,
+                    thumbnail_150x150: post.thumbnail_resource[0].src,
+                    thumbnail_240x240: post.thumbnail_resource[1].src,
+                    thumbnail_320x320: post.thumbnail_resource[2].src,
+                    thumbnail_480x480: post.thumbnail_resource[3].src,
+                    thumbnail_640x640: post.thumbnail_resource[4].src
+                  }
+                )
+              );
+            }
+          } catch (err) {
+            console.log(err)
           }
         })
 
         oldPosts.forEach(oldPost => {
-          if(!posts.find(post => post.owner_id === oldPost.owner_id)) {
+          if(!posts.find(post => post.shortcode === oldPost.shortcode)) {
             deletePostCount ++;
             queries.push(
               strapi.query('instagram-feed', 'instagram-feed').delete({ id: oldPost.id })
